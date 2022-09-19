@@ -37,6 +37,17 @@ export const listarTareas = async(req, res)=>{
 }
 
 
-export const borrarTareas = (req, res)=>{
-    res.send('aqui se borra una tarea')
+export const borrarTareas = async(req, res)=>{
+    try {
+        // buscar un producto en la collection por id en la BD y borrar
+        await Tarea.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje:'La tarea fue eliminada correctamente'
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).jason({
+            mensaje:'Error al tratar de borrar la tarea'
+        })
+    }
 }

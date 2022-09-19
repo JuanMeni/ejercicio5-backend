@@ -22,8 +22,18 @@ export const crearTarea = async(req,res)=>{
     }
 }
 
-export const listarTareas = (req, res)=>{
-    res.send('enviar lista de tareas')
+export const listarTareas = async(req, res)=>{
+    try {
+        // buscar en la BD la colecction de tareas
+        const listaTareas = await Tarea.find();
+        // enviar la respuesta a frontend
+        res.status(200).json(listaTareas);
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            mensaje:'Error al buscar las tareas'
+        })
+    }
 }
 
 

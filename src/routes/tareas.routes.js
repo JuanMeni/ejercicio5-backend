@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { borrarTareas, crearTarea, listarTareas} from "../controllers/tareas.controllers";
+import validacionTarea from "../helpers/validacionTarea";
 
 const router = Router();
 
@@ -8,7 +9,7 @@ const router = Router();
 router
 .route('/')
 .get(listarTareas)
-.post(crearTarea)
+.post(validacionTarea,crearTarea)
 
 router
 .route('/:id')
@@ -16,7 +17,3 @@ router
 
 
 export default router;
-
-// app.get('/prueba', (req,res)=>{
-//     res.send('Otra peticion get')
-// })

@@ -3,7 +3,6 @@ import Tarea from "../models/tarea";
 export const crearTarea = async(req,res)=>{
     try {
         console.log(req.body)
-        // validaciones
         // crear el obj para guardar en BD
         const tareaNueva = new Tarea(req.body); //pq solo tengo una sola cosa
         // guardar en BD
